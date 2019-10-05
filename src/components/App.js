@@ -2,9 +2,14 @@ import React,{Component} from 'react';
 import Todos from "./Todos";
 import Goals from "./Goals";
 import {connect} from 'react-redux'
+import handleInitAction from '../actions/share'
 
 class App extends Component{
-  render() {
+    componentDidMount() {
+        this.props.dispatch(handleInitAction())
+    }
+
+    render() {
       const {dispatch} = this.props
     return (
         <div>
