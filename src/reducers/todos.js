@@ -4,7 +4,7 @@ import {
     TOGGLE_TODO,
 } from "../actions/todos";
 
-import {INIT_DATA} from '../actions/share'
+import {INIT_DATA,Loading} from '../actions/share'
 
 export default function todos(state=[],action) {
     switch (action.type) {

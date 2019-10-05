@@ -7,6 +7,7 @@ import {
     handleRemoveTodoAction
 } from '../actions/todos'
 
+
 class Todos extends Component{
     addItem = ()=>{
         const {dispatch} = this.props
@@ -22,6 +23,7 @@ class Todos extends Component{
         dispatch(handleToggleAction(id))
     }
     render() {
+
         return (
             <div>
                 <h1>Todos</h1>

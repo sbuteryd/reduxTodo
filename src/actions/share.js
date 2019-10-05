@@ -1,6 +1,7 @@
 import * as API  from 'goals-todos-api'
 
 export const INIT_DATA = 'INIT_DATA'
+export const Loading = 'Loading'
 
 function initDataAction(todos,goals) {
     return {

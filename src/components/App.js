@@ -10,9 +10,12 @@ class App extends Component{
     }
 
     render() {
-      const {dispatch} = this.props
-    return (
-        <div>
+      const {dispatch,loading} = this.props
+        if(loading === true){
+            return  <h1>Loading</h1>
+        }
+        return (
+            <div>
             <Todos dispatch={dispatch}/>
             <Goals dispatch={dispatch}/>
         </div>
@@ -21,9 +24,8 @@ class App extends Component{
 }
 
 function mapStateToProps(state,own) {
-
     return {
-
+        loading:state.loading
     }
 }
 
