@@ -1,12 +1,21 @@
+import {receiveTweets} from './tweets'
+import {receiveUsers} from './users'
+import {authedUser} from './authedUser'
 import * as API from '../utils/api'
 
-const RECEIVE_INITDATA = 'RECEIVE_INITDATA'
+export const RECEIVE_INITDATA = 'RECEIVE_INITDATA'
 
 
-function receiveInitData(){
+const AUTHED_USERS = 'tylermcginnis'
+
+export function handleInitData(){
     return (dispatch)=>{
-        return API.getInitialData().then(([users,tweets])=>{
-            console.log(users,tweets)
+        return API.getInitialData().then(({tweets,users})=>{
+            dispatch(receiveTweets(tweets))
+            dispatch(receiveUsers(users))
+            dispatch(authedUser(AUTHED_USERS))
         })
+
     }
 }
+
