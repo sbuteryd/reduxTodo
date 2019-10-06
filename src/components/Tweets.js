@@ -7,7 +7,7 @@ class Tweets extends Component{
         console.log(this.props.tweetList)
         return (
             <div>
-                <h1>Tweets</h1>
+
             </div>
         );
     }
