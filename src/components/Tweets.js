@@ -8,14 +8,14 @@ class Tweets extends Component{
     state = {
         likes: 0,
         dislikes: 0,
-        action: null,
+        action: true,
     };
 
     like = () => {
         this.setState({
             likes: 1,
             dislikes: 0,
-            action: 'liked',
+            action: true,
         });
     };
 
@@ -35,28 +35,25 @@ class Tweets extends Component{
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon
-              type="like"
-              theme={action === 'liked' ? 'filled' : 'outlined'}
-              onClick={this.like}
+                        type="like"
+                        theme={action === tweet.hasLiked ? 'filled' : 'outlined'}
+                        onClick={this.like}
                     />
                 </Tooltip>
                 <span style={{ paddingLeft: 8, cursor: 'auto' }}>{tweet.likes ? tweet.likes:likes}</span>
             </span>,
-            <span key=' key="comment-basic-dislike"'>
-                <Tooltip title="Dislike">
-                    <Icon
-                        type="dislike"
-                        theme={action === 'disliked' ? 'filled' : 'outlined'}
-                        onClick={this.dislike}
-                    />
+
+            <span key=' key="comment-basic-replyto"'>
+                <Tooltip title="replyto">
+                    <Icon type="edit" />
                 </Tooltip>
-                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{tweet.replies}</span>
             </span>,
             <span key="comment-basic-reply-to">Reply to</span>,
         ];
         return (
             <Fragment>
-                <Card  hoverable style={{width:800,marginTop:20}}>
+                <Card  hoverable style={{marginTop:20}}>
                     <Comment
                         actions={actions}
                         author={<a>{tweet.name}</a>}

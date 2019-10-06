@@ -10,7 +10,7 @@ class App extends React.Component{
     }
     render() {
     return (
-        <div>
+        <div style={{width:800,margin:'0 auto'}}>
             {this.props.authedUser !==null ?   <Dashboard/>:null}
         </div>
     );
