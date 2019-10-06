@@ -11,8 +11,8 @@ const AUTHED_USERS = 'tylermcginnis'
 export function handleInitData(){
     return (dispatch)=>{
         return API.getInitialData().then(({tweets,users})=>{
-            dispatch(receiveTweets(tweets))
             dispatch(receiveUsers(users))
+            dispatch(receiveTweets(tweets))
             dispatch(authedUser(AUTHED_USERS))
         })
 

@@ -4,6 +4,7 @@ import {formatTweet} from '../utils/helpers'
 
 class Tweets extends Component{
     render() {
+        console.log(this.props.tweetList)
         return (
             <div>
                 <h1>Tweets</h1>
@@ -15,11 +16,9 @@ class Tweets extends Component{
 function mapStateToProps({tweets,users,authedUser},{tweetId}) {
     let tweet = tweets[tweetId]
     const parentTweet = tweet.replyingTo   === null  ? null:tweet.replyingTo
-
-     console.log(users[tweet.author])
     return {
         authedUser,
-        // tweetList:formatTweet(tweet,users[tweet.author],authedUser,parentTweet)
+        tweetList:formatTweet(tweet,users[tweet.author],authedUser,parentTweet)
     }
 }
 
