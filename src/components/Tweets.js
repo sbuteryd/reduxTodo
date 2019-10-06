@@ -2,45 +2,32 @@ import React,{Component,Fragment} from 'react'
 import {connect} from 'react-redux'
 import {formatTweet,formatDate} from '../utils/helpers'
 import { Comment, Icon, Tooltip, Avatar,Card} from 'antd';
+import {handleToggleTweet} from '../action/tweets'
 import moment from 'moment';
 
 class Tweets extends Component{
-    state = {
-        likes: 0,
-        dislikes: 0,
-        action: true,
-    };
+    like =(e)=>{
+        e.preventDefault()
+        const { dispatch, tweet, authedUser } = this.props
+        dispatch(handleToggleTweet({
+            id: tweet.id,
+            hasLiked: tweet.hasLiked,
+            authedUser
+        }))
+    }
 
-    like = () => {
-        this.setState({
-            likes: 1,
-            dislikes: 0,
-            action: true,
-        });
-    };
-
-    dislike = () => {
-        this.setState({
-            likes: 0,
-            dislikes: 1,
-            action: 'disliked',
-        });
-    };
     render() {
         const {tweet,authedUser} = this.props
-        console.log(tweet)
-        const { likes, dislikes, action } = this.state;
-
         const actions = [
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon
+                        onClick={(e)=>this.like(e)}
                         type="like"
-                        theme={action === tweet.hasLiked ? 'filled' : 'outlined'}
-                        onClick={this.like}
+                        theme={tweet.hasLiked ? 'filled' : 'outlined'}
                     />
                 </Tooltip>
-                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{tweet.likes ? tweet.likes:likes}</span>
+                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{tweet.likes ? tweet.likes:0}</span>
             </span>,
 
             <span key=' key="comment-basic-replyto"'>
