@@ -40,7 +40,7 @@ class Tweets extends Component{
               onClick={this.like}
                     />
                 </Tooltip>
-                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{tweet.likes ? tweet.likes:likes}</span>
             </span>,
             <span key=' key="comment-basic-dislike"'>
                 <Tooltip title="Dislike">
@@ -77,7 +77,8 @@ class Tweets extends Component{
 
                         datetime={
                             <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                                <span>{moment().fromNow()}</span>
+                                {tweet.timestamp !==null ? <span>{formatDate(tweet.timestamp)}</span>:<span>{moment().fromNow()}</span>
+                                }
                             </Tooltip>
                         }
                     />

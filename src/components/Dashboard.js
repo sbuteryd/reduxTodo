@@ -17,9 +17,8 @@ class Dashboard extends Component{
 
 
 function mapStateToProps({tweets,users,authedUser},{id}) {
-
     const tweetKey = Object.keys(tweets)
-    const tweetIds = tweetKey.sort((a,b)=>(tweets[b].timestamp,-tweets[a].timestamp)
+    const tweetIds = tweetKey.sort((a,b)=>(tweets[b].timestamp -tweets[a].timestamp)
     )
     return {
         authedUser,
